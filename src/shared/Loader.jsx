@@ -4,8 +4,8 @@ export default function Loader(){
 
 return(
 <div className='flex-center'>
-                          Loading...
-                          </div>
+    Loading...
+</div>
 )
 
 }
