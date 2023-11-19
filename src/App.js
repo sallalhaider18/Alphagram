@@ -11,11 +11,11 @@ function App() {
     <Routes>
 
       { /* PUBLIC ROOTS */ }
-         <Route path='/sign-in' element= {<SignInForm />} />
+         <Route index element= {<SignInForm />} />
          <Route path='/sign-up' element= {<SignUpForm />} />
 
       { /* PRIVATE ROOTS */ }
-         <Route index element= {<Home />} />
+         <Route path='/home' element= {<Home />} />
       
     </Routes>
     
