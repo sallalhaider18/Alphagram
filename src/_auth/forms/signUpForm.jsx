@@ -1,7 +1,12 @@
 import React, { useState } from 'react';
 import { Link, Navigate } from 'react-router-dom';
+import axios from 'axios';
+import Loader from '../../shared/Loader';
 
 export default function SignUpForm (){
+  const isLoading = false;
+
+
   const divStyle = {
     background: 'black',
   };
@@ -13,8 +18,16 @@ export default function SignUpForm (){
  const [lastname, setLastName] = useState('');
 
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+ async function handleSubmit(e){
+  e.preventDefault();
+
+try {
+  await axios.post("http://localhost:8000/signup",{
+    email,password
+  })
+} catch (error) {
+  console.log(error);
+}
 
     // Perform your authentication logic here
     // For demonstration purposes, just showing an error if email or password is empty
@@ -80,8 +93,20 @@ export default function SignUpForm (){
                   </div>
 
                   <div class="text-center pt-1 mb-5 pb-1">
-                    <button class="btn btn-danger btn-block fa-lg gradient-custom-2 mb-3" type="button">Log
-                      Up</button>
+                    <button class="btn btn-danger btn-block fa-lg gradient-custom-2 mb-3" type="button" onClick={handleSubmit}>
+                    {
+                        isLoading ? (
+                          <Loader />
+                        ) :
+                        (
+                          <div className='flex-center'>
+                          Sign In
+                          </div>
+                        )
+                    
+                      }
+
+                    </button>
                   </div>
 
                   <div class="d-flex align-items-center justify-content-center pb-4">
